@@ -18,9 +18,9 @@ import org.springframework.context.annotation.ImportResource;
  */
 @SpringBootApplication
 @Configuration
-@ComponentScan(basePackages={"com.demo"})
+@ComponentScan(basePackages={"com.demo2"})
 @ImportResource(locations={"classpath:applicationContext-*.xml"})
-@MapperScan("com.demo.support.dao")
+@MapperScan("com.demo2.support.dao")
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableFeignClients

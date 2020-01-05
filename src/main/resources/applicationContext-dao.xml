@@ -10,7 +10,7 @@
 	<description>The application context for dao</description>
 	<bean class="com.demo2.support.dao.impl.factory.VObjFactory"/>
 	<bean id="basicDao" class="com.demo2.support.dao.impl.BasicDaoJdbcImpl"></bean>
-	<bean id="repository" class="com.demo2.support.repository.RepositoryImpl">
+	<bean id="repository" class="com.demo2.support.repository.Repository">
 		<property name="dao" ref="basicDao"></property>
 	</bean>
 </beans>
