@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+  <vo class="com.demo2.product.entity.Product" tableName="Product">
+    <property name="id" column="id" isPrimaryKey="true"></property>
+    <property name="name" column="name"></property>
+    <property name="price" column="price"></property>
+    <property name="unit" column="unit"></property>
+    <property name="classify" column="classify"></property>
+    <relation name="supplier" joinKey="supplier_id" class="com.demo2.product.entity.Supplier"></relation>
+  </vo>
+  <vo class="com.demo2.product.entity.Supplier" tableName="Supplier">
+    <property name="id" column="id" isPrimaryKey="true"></property>
+    <property name="name" column="name"></property>
+  </vo>
+</vobjs>
