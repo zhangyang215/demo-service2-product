@@ -6,7 +6,7 @@
     <property name="price" column="price"></property>
     <property name="unit" column="unit"></property>
     <property name="classify" column="classify"></property>
-    <relation name="supplier" joinKey="supplier_id" class="com.demo2.product.entity.Supplier"></relation>
+    <join name="supplier" joinKey="supplier_id" joinType="manyToOne" class="com.demo2.product.entity.Supplier"></join>
   </vo>
   <vo class="com.demo2.product.entity.Supplier" tableName="Supplier">
     <property name="id" column="id" isPrimaryKey="true"></property>

@@ -8,12 +8,12 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
 	>
 	<description>The application context for query</description>
-	<!--  -->
-	<bean id="productQry" class="com.demo2.product.query.service.ProductQueryServiceImpl">
+	<bean id="productQry" class="com.demo2.support.repository.AutofillQueryServiceImpl">
 		<property name="queryDao">
 			<bean class="com.demo2.support.dao.impl.QueryDaoMybatisImpl">
 				<property name="sqlMapper" value="com.demo2.product.query.dao.ProductMapper.query"></property>
 			</bean>
 		</property>
+		<property name="dao" ref="basicDaoJdbcImpl"></property>
 	</bean>
 </beans>

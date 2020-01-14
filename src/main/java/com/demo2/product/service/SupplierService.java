@@ -26,7 +26,7 @@ public interface SupplierService {
 	 * @return the supplier
 	 */
 	@GetMapping("get/supplier/loadSupplier")
-	public Supplier loadSupplier(@RequestParam(value="arg0") long id);
+	public Supplier loadSupplier(@RequestParam(value="id") long id);
 	
 	/**
 	 * @return the list of supplier
