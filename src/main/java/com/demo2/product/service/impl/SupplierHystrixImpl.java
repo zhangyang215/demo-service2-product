@@ -27,8 +27,18 @@ public class SupplierHystrixImpl implements SupplierService {
 	}
 
 	@Override
-	public List<Supplier> listOfSupplier() {
-		List<Supplier> list = new ArrayList<Supplier>();
+	public List<Supplier> listOfSuppliers() {
+		List<Supplier> list = new ArrayList<>();
+		return list;
+	}
+
+	@Override
+	public List<Supplier> loadSuppliers(List<Long> ids) {
+		List<Supplier> list = new ArrayList<>();
+		for(long id : ids) {
+			Supplier supplier = loadSupplier(id);
+			list.add(supplier);
+		}
 		return list;
 	}
 

@@ -6,7 +6,6 @@ package com.demo2.product.service.impl;
 import java.util.List;
 
 import com.demo2.support.dao.BasicDao;
-import com.demo2.support.repository.Repository;
 import com.demo2.product.entity.Product;
 import com.demo2.product.service.ProductService;
 
@@ -16,21 +15,6 @@ import com.demo2.product.service.ProductService;
  */
 public class ProductServiceImpl implements ProductService {
 	private BasicDao dao;
-	private Repository repository;
-	
-	/**
-	 * @return the repository
-	 */
-	public Repository getRepository() {
-		return repository;
-	}
-
-	/**
-	 * @param repository the repository to set
-	 */
-	public void setRepository(Repository repository) {
-		this.repository = repository;
-	}
 
 	/**
 	 * @return the dao
@@ -53,19 +37,29 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void saveProductList(List<Product> listOfProducts) {
-		dao.insertOrUpdate(listOfProducts);
+		dao.insertOrUpdateForList(listOfProducts);
 	}
 
 	@Override
 	public void deleteProduct(Long id) {
 		Product product = new Product();
-		product.setId(id);
-		dao.delete(product);
+		dao.delete(id, product);
+	}
+
+	@Override
+	public void deleteProductList(List<Long> ids) {
+		List<Product> listOfProducts = dao.loadForList(ids, new Product());
+		dao.deleteForList(listOfProducts);
 	}
 
 	@Override
 	public Product getProduct(Long id) {
 		Product template = new Product();
-		return repository.load(id, template);
+		return dao.load(id, template);
+	}
+
+	@Override
+	public List<Product> getProductList(List<Long> ids) {
+		return dao.loadForList(ids, new Product());
 	}
 }
