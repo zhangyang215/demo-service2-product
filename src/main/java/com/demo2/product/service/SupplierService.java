@@ -8,22 +8,25 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.demo2.product.entity.Supplier;
+import com.demo2.product.service.impl.SupplierHystrixImpl;
 
 /**
  * The service of suppliers.
  * @author fangang
  */
-@FeignClient(value="service-supplier")
+@FeignClient(value="service-supplier", fallback=SupplierHystrixImpl.class)
 public interface SupplierService {
 	/**
 	 * @param id
 	 * @return the supplier
 	 */
-	@GetMapping("orm/supplier/loadSupplier")
-	public Supplier loadSupplier(@RequestParam("id")long id);
+	@RequestMapping(value = "orm/supplier/loadSupplier", method = RequestMethod.GET)
+	public Supplier loadSupplier(@RequestParam("id")Long id);
 	/**
 	 * @param ids
 	 * @return

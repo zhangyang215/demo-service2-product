@@ -19,7 +19,7 @@ import com.demo2.product.service.SupplierService;
 public class SupplierHystrixImpl implements SupplierService {
 
 	@Override
-	public Supplier loadSupplier(long id) {
+	public Supplier loadSupplier(Long id) {
 		Supplier supplier = new Supplier();
 		supplier.setId(id);
 		supplier.setName("默认供应商");
