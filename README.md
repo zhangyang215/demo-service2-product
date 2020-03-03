@@ -335,8 +335,10 @@ service-product:
 
 curl -X POST http://localhost:9003/query/productQry
 
-curl -X POST http://localhost:9003/orm/product/saveProduct -d "id=30006&name=ThinkPad+T220&price=4600&unit=%E4%B8%AA&supplierId=S0002&classify=%E5%8A%9E%E5%85%AC%E7%94%A8%E5%93%81"
+curl http://localhost:9003/orm/product/getProduct?id=30001
 
-curl http://localhost:9003/orm/product/deleteProduct?id=30006
+curl -X POST http://localhost:9003/orm/product/saveProduct -d "id=40006&name=ThinkPad+T220&price=4600&unit=%E4%B8%AA&supplierId=S0002&classify=%E5%8A%9E%E5%85%AC%E7%94%A8%E5%93%81"
+
+curl http://localhost:9003/orm/product/deleteProduct?id=40006
 
 ```
