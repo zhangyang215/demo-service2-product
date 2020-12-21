@@ -3,13 +3,6 @@ spring:
     name: service-product
   profiles:
       active: dev
-  cloud:
-    config:
-      uri: ${GIT_URL:http://localhost:9000/}
-      failFast: false
-      # discovery:
-      #   enabled: true
-      #   serviceId: service-config
 
 mybatis:
   mapperLocations: classpath*:mapper/*Mapper.xml
@@ -27,7 +20,7 @@ spring:
     enabled: false
   datasource:
     url: jdbc:mysql://47.105.194.89:32306/demo
-    username: root
+    username: demo
     password: 1234
     type: com.alibaba.druid.pool.DruidDataSource
   redis:
@@ -50,16 +43,3 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://localhost:9001/eureka/
----
-spring:
-  profiles: docker
-
-server:
-  port: ${SERVICE_PORT:9003}
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: ${REGISTRY_URL}
