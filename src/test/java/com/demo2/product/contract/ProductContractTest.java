@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.alibaba.fastjson.JSONObject;
 import com.demo2.product.entity.Product;
+import com.demo2.product.entity.Supplier;
 
 /**
  * @author fangang
@@ -70,7 +71,8 @@ public class ProductContractTest {
 		product.setName("Computor");
 		product.setPrice((double)8000);
 		product.setUnit("unit");
-		product.setSupplierId((long)20001);
+		product.setSupplierId((long)20002);
+		product.setSupplier(new Supplier((long)20002,"默认供应商"));
 		String productStr = JSONObject.toJSONString(product);
 		String idStr = Long.valueOf(id).toString();
 		
@@ -79,7 +81,7 @@ public class ProductContractTest {
 				.param("name", "Computor")
 				.param("price", "8000")
 				.param("unit", "unit")
-				.param("supplierId", "20001"))
+				.param("supplierId", "20002"))
 		.andExpect(status().isOk());
 		
 		mvc.perform(get("/orm/product/getProduct")
@@ -93,6 +95,7 @@ public class ProductContractTest {
 		
 		mvc.perform(get("/orm/product/getProduct")
 				.param("id", idStr))
-		.andExpect(status().isOk());
+		.andExpect(status().isOk())
+		.andExpect(content().string(""));
 	}
 }
