@@ -79,7 +79,7 @@ public class ProductContractTest {
 				.param("name", "Computor")
 				.param("price", "8000")
 				.param("unit", "unit")
-				.param("supplier_id", "20001"))
+				.param("supplierId", "20001"))
 		.andExpect(status().isOk());
 		
 		mvc.perform(get("/orm/product/getProduct")
